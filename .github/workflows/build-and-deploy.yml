@@ -73,7 +73,7 @@ jobs:
           fi
           
           # Extract changelog from CHANGELOG.md
-          CHANGELOG=$(sed -n "/## \[$FULL_VERSION\]/,/^## \[/p" CHANGELOG.md | sed '1d;$d' | sed '/^$/d')
+          CHANGELOG=$(sed -n "/## \[$FULL_VERSION\]/,/^## \[/p" CHANGELOG.md | sed '1d' | sed '/^## \[/d' | sed '/^$/d')
           
           if [ -z "$CHANGELOG" ]; then
             echo "❌ ERROR: No changelog found for version $FULL_VERSION in CHANGELOG.md"
